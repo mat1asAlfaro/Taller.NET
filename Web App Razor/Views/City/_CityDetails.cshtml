@@ -1,0 +1,45 @@
+@using Microsoft.CodeAnalysis.CSharp.Syntax
+@model tarea_4.Models.City
+
+@if (Model != null)
+{
+  <h4 class="fw-semibold mb-3">Excursión @Model.Id</h4>
+  <div class="row mb-2">
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Nombre:</span>
+      <span class="fw-bold">@Model.Name</span>
+    </div>
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">País:</span>
+      <span class="fw-bold">@Model.Country</span>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Población:</span>
+      <span class="fw-bold">@(Model.Population.HasValue? Model.Population.Value.ToString("N0") : "-")</span>
+    </div>
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Atracciones:</span>
+      <span class="fw-bold">
+        @(Model.Attractions != null && Model.Attractions.Any()
+              ? string.Join(", ", Model.Attractions)
+              : "-")
+      </span>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-12 mb-2">
+      <span class="text-secondary">Comidas Tradicionales:</span>
+      <span class="fw-bold">
+        @(Model.TraditionalFoods != null && Model.TraditionalFoods.Any()
+              ? string.Join(", ", Model.TraditionalFoods)
+              : "-")
+      </span>
+    </div>
+  </div>
+}
+else
+{
+  <p class="text-danger">No se encontró la ciudad.</p>
+}

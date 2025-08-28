@@ -1,0 +1,43 @@
+@model IEnumerable<tarea_4.Models.Hotel>
+
+<table class="table border border-1 m-0" id="table">
+  <thead class="table-light">
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Ubicacion</th>
+      <th>Categoria</th>
+      <th>Precio Por Noche</th>
+      <th>Comodidades</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var hotel in Model)
+    {
+      <tr onclick="uploadDetail('Hotels', '@hotel.Id'); selectRow(this)">
+        <td>@hotel.Id</td>
+        <td>@hotel.Name</td>
+        <td>@hotel.Location</td>
+        <td>
+          @for (int i = 0; i < 5; i++)
+          {
+            if (i < hotel.Category)
+            {
+              <i class="bi bi-star-fill"></i>
+            }
+            else
+            {
+              <i class="bi bi-star"></i>
+            }
+          }
+      </td>
+      <td>USD @hotel.PricePerNight?.ToString("F2")</td>
+      <td>
+        @(hotel.Amenities != null && hotel.Amenities.Any()
+                ? hotel.Amenities.FirstOrDefault() + " ..."
+                : "-")
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

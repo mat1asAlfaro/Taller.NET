@@ -1,0 +1,35 @@
+@model IEnumerable<tarea_4.Models.Beach>
+
+<table class="table table-hover border border-1 m-0" id="table">
+  <thead class="table-light ">
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Ubicacion</th>
+      <th>Tipo</th>
+      <th>Actividades</th>
+      <th>Facilidades</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var beach in Model)
+    {
+      <tr onclick="uploadDetail('Beaches', '@beach.Id'); selectRow(this)">
+        <td>@beach.Id</td>
+        <td>@beach.Name</td>
+        <td>@beach.Location</td>
+        <td>@beach.Type</td>
+        <td>
+          @(beach.Activities != null && beach.Activities.Any()
+                  ? beach.Activities.FirstOrDefault() + " ..."
+                  : "-")
+        </td>
+        <td>
+          @(beach.Facilities != null && beach.Facilities.Any()
+                  ? beach.Facilities.FirstOrDefault() + " ..."
+                  : "-")
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

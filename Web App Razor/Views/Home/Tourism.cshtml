@@ -1,0 +1,86 @@
+@{
+  ViewData["Title"] = "Turismo";
+}
+
+<div class="custom-max-w-6xl mx-auto custom-space-y-6">
+  <p class="fw-bold text-center" style="margin-bottom: 30px; font-size: 30px;">Viajes & Turismo</p>
+
+  <ul class="nav nav-tabs justify-content-center d-flex p-1 m-0" style="font-size: 14px;">
+    <li class="nav-item">
+      <a class="nav-link px-3 py-2 active" onclick="changeTab(this, 'Hotels')">Hoteles</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link px-3 py-2" onclick="changeTab(this, 'Excursions')">Excursiones</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link px-3 py-2" onclick="changeTab(this, 'Beaches')">Playas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link px-3 py-2" onclick="changeTab(this, 'Cities')">Ciudades</a>
+    </li>
+  </ul>
+
+  <div class="col mt-4">
+    <div class="row-md-8 bg-white p-4 border border-2 custom-light-border rounded-4 mb-4">
+      <h5 class="fw-semibold mb-1">Sección A</h5>
+      <p class="text-secondary mb-4" style="font-size: 14px;">
+        Acá voy a mostrar una tabla con la información general de los tipos de propuestas seleccionadas por el usuario.
+      </p>
+      <div id="tourism-type-table"></div>
+    </div>
+    <div class="row-md-4 bg-white p-4 border border-2 custom-light-border rounded-4 mb-4">
+      <h5 class="fw-semibold mb-1">Sección B</h5>
+      <p class="text-secondary mb-4" style="font-size: 14px;">
+        Al hacer click en alguna de las propuestas mostradas en la sección A, se actualiza automáticamente esta
+        sección, mostrando información detallada de la propuesta seleccionada.
+      </p>
+      <p id="detail-info" class="text-secondary text-center pt-4 pb-4">
+        Selecciona una propuesta de la tabla para ver información detallada
+      </p>
+      <div id="tourism-type-detail"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+@section scripts {
+  <script>
+    function changeTab(element, type) {
+      // Clear detail section if switching tabs
+      if (!$(element).hasClass('active')) {
+        $("#tourism-type-detail").html('');
+        $('#detail-info').removeClass('d-none');
+      }
+      $('.nav-link').removeClass('active');
+      $(element).addClass('active');
+      uploadTable(type);
+    }
+
+    function uploadTable(type) {
+      $.get('/' + type, function (data) {
+        $("#tourism-type-table").html(data);
+      });
+    }
+
+    function uploadDetail(type, id) {
+      $.get(`/${ type }/Detail`, { id: id }, function (data) {
+        $('#detail-info').addClass('d-none');
+        $("#tourism-type-detail").html(data);
+      });
+    }
+
+    $(document).ready(function () {
+      uploadTable('Hotels');
+    });
+
+    function selectRow(tr) {
+      const former = document.querySelector('#table tr.selected');
+      console.log('anterior: ', former);
+      console.log('actual: ', tr);
+      if (former)
+        former.classList.remove('selected');
+
+      tr.classList.add('selected');
+    }
+  </script>
+}

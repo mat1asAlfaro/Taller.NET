@@ -1,0 +1,35 @@
+@model IEnumerable<tarea_4.Models.City>
+
+<table class="table table-hover border border-1 m-0" id="table">
+  <thead class="table-light ">
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Pais</th>
+      <th>Poblacion</th>
+      <th>Atracciones</th>
+      <th>Comidas Tradicionales</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var city in Model)
+    {
+      <tr onclick="uploadDetail('Cities', '@city.Id'); selectRow(this)">
+        <td>@city.Id</td>
+        <td>@city.Name</td>
+        <td>@city.Country</td>
+        <td>@(city.Population.HasValue? city.Population.Value.ToString("N0") : "-")</td>
+        <td>
+          @(city.Attractions != null && city.Attractions.Any()
+                  ? city.Attractions.FirstOrDefault() + " ..."
+                  : "-")
+        </td>
+        <td>
+          @(city.TraditionalFoods != null && city.TraditionalFoods.Any()
+                  ? city.TraditionalFoods.FirstOrDefault() + " ..."
+                  : "-")
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

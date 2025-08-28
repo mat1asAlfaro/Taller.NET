@@ -1,0 +1,53 @@
+@using Microsoft.CodeAnalysis.CSharp.Syntax
+@model tarea_4.Models.Hotel
+
+@if (Model != null)
+{
+  <h4 class="fw-semibold mb-3">Hotel @Model.Id</h4>
+  <div class="row mb-2">
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Nombre:</span>
+      <span class="fw-bold">@Model.Name</span>
+    </div>
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Ubicación:</span>
+      <span class="fw-bold">@Model.Location</span>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Categoría:</span>
+      @for (int i = 0; i < 5; i++)
+      {
+        if (i < @Model.Category)
+        {
+          <i class="bi bi-star-fill" style="color: gold;"></i>
+        }
+        else
+        {
+          <i class="bi bi-star" style="color: gold;"></i>
+        }
+      }
+  </div>
+  <div class="col-md-6 mb-2">
+    <span class="text-secondary">Precio por noche:</span>
+    <span class="fw-bold" style="color: #22c55e;">
+      US$ @(Model.PricePerNight.HasValue? Model.PricePerNight.Value.ToString("N2") : "-")
+    </span>
+  </div>
+</div>
+<div class="row mb-2">
+  <div class="col-md-12 mb-2">
+    <span class="text-secondary">Comodidades:</span>
+    <span class="fw-bold">
+      @(Model.Amenities != null && Model.Amenities.Any()
+            ? string.Join(", ", Model.Amenities)
+            : "-")
+      </span>
+    </div>
+  </div>
+}
+else
+{
+  <p class="text-danger">No se encontró el hotel.</p>
+}

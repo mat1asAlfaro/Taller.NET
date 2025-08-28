@@ -1,0 +1,43 @@
+@using Microsoft.CodeAnalysis.CSharp.Syntax
+@model tarea_4.Models.Excursion
+
+@if (Model != null)
+{
+  <h4 class="fw-semibold mb-3">Excursión @Model.Id</h4>
+  <div class="row mb-2">
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Nombre:</span>
+      <span class="fw-bold">@Model.Name</span>
+    </div>
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Ubicación:</span>
+      <span class="fw-bold">@Model.Location</span>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Precio Por Persona:</span>
+      <span class="fw-bold" style="color: #22c55e;">
+        US$ @(Model.PricePerPerson.HasValue? Model.PricePerPerson.Value.ToString("N2") : "-")
+      </span>
+    </div>
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Incluye:</span>
+      <span class="fw-bold">
+        @(Model.Includes != null && Model.Includes.Any()
+              ? string.Join(", ", Model.Includes)
+              : "-")
+      </span>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-12 mb-2">
+      <span class="text-secondary">Dificultad:</span>
+      <span class="fw-bold">@Model.Difficulty</span>
+    </div>
+  </div>
+}
+else
+{
+  <p class="text-danger">No se encontró la excursión.</p>
+}

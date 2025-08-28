@@ -1,0 +1,45 @@
+@using Microsoft.CodeAnalysis.CSharp.Syntax
+@model tarea_4.Models.Beach
+
+@if (Model != null)
+{
+  <h4 class="fw-semibold mb-3">Playa @Model.Id</h4>
+  <div class="row mb-2">
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Nombre:</span>
+      <span class="fw-bold">@Model.Name</span>
+    </div>
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Ubicación:</span>
+      <span class="fw-bold">@Model.Location</span>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Tipo:</span>
+      <span class="fw-bold">@Model.Type</span>
+    </div>
+    <div class="col-md-6 mb-2">
+      <span class="text-secondary">Actividades:</span>
+      <span class="fw-bold">
+        @(Model.Activities != null && Model.Activities.Any()
+              ? string.Join(", ", Model.Activities)
+              : "-")
+      </span>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-12 mb-2">
+      <span class="text-secondary">Facilidades:</span>
+      <span class="fw-bold">
+        @(Model.Facilities != null && Model.Facilities.Any()
+              ? string.Join(", ", Model.Facilities)
+              : "-")
+      </span>
+    </div>
+  </div>
+}
+else
+{
+  <p class="text-danger">No se encontró la playa.</p>
+}

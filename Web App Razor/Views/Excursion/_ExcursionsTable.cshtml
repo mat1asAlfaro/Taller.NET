@@ -1,0 +1,31 @@
+@model IEnumerable<tarea_4.Models.Excursion>
+
+<table class="table table-hover border border-1 m-0" id="table">
+  <thead class="table-light ">
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Ubicacion</th>
+      <th>Precio Por Persona</th>
+      <th>Incluye</th>
+      <th>Dificultad</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var excursion in Model)
+    {
+      <tr onclick="uploadDetail('Excursions', '@excursion.Id'); selectRow(this)">
+        <td>@excursion.Id</td>
+        <td>@excursion.Name</td>
+        <td>@excursion.Location</td>
+        <td>USD @excursion.PricePerPerson?.ToString("F2")</td>
+        <td>
+          @(excursion.Includes != null && excursion.Includes.Any()
+                  ? excursion.Includes.FirstOrDefault() + " ..."
+                  : "-")
+        </td>
+        <td>@excursion.Difficulty</td>
+      </tr>
+    }
+  </tbody>
+</table>
