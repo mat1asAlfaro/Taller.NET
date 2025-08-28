@@ -1,0 +1,11 @@
+/home/matias/Escritorio/Materias S2 2025/.NET/repo/TallerNET/01_1_webApiEjemplo/01_1_webApiEjemplo/publish/01_1_webApiEjemplo
+/home/matias/Escritorio/Materias S2 2025/.NET/repo/TallerNET/01_1_webApiEjemplo/01_1_webApiEjemplo/publish/appsettings.Development.json
+/home/matias/Escritorio/Materias S2 2025/.NET/repo/TallerNET/01_1_webApiEjemplo/01_1_webApiEjemplo/publish/appsettings.json
+/home/matias/Escritorio/Materias S2 2025/.NET/repo/TallerNET/01_1_webApiEjemplo/01_1_webApiEjemplo/publish/01_1_webApiEjemplo.dll
+/home/matias/Escritorio/Materias S2 2025/.NET/repo/TallerNET/01_1_webApiEjemplo/01_1_webApiEjemplo/publish/01_1_webApiEjemplo.deps.json
+/home/matias/Escritorio/Materias S2 2025/.NET/repo/TallerNET/01_1_webApiEjemplo/01_1_webApiEjemplo/publish/01_1_webApiEjemplo.runtimeconfig.json
+/home/matias/Escritorio/Materias S2 2025/.NET/repo/TallerNET/01_1_webApiEjemplo/01_1_webApiEjemplo/publish/01_1_webApiEjemplo.pdb
+/home/matias/Escritorio/Materias S2 2025/.NET/repo/TallerNET/01_1_webApiEjemplo/01_1_webApiEjemplo/publish/Microsoft.OpenApi.dll
+/home/matias/Escritorio/Materias S2 2025/.NET/repo/TallerNET/01_1_webApiEjemplo/01_1_webApiEjemplo/publish/Swashbuckle.AspNetCore.Swagger.dll
+/home/matias/Escritorio/Materias S2 2025/.NET/repo/TallerNET/01_1_webApiEjemplo/01_1_webApiEjemplo/publish/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/matias/Escritorio/Materias S2 2025/.NET/repo/TallerNET/01_1_webApiEjemplo/01_1_webApiEjemplo/publish/Swashbuckle.AspNetCore.SwaggerUI.dll
