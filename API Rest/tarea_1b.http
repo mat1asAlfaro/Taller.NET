@@ -1,0 +1,6 @@
+@tarea_1b_HostAddress = http://localhost:5190
+
+GET {{tarea_1b_HostAddress}}/api/tasks/
+Accept: application/json
+
+###
